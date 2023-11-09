@@ -13,7 +13,7 @@ const ChatBar = ()=>{
         console.log("Sent")
 
     }
-    return(<div className="flex h-10 w-screen border-2 border-black mb-0">
+    return(<div className="flex h-[5%] w-screen border-2 border-black mb-0">
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={onChange}/>
                 <button  >Sent</button>
