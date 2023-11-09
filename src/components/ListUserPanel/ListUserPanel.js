@@ -6,7 +6,7 @@ const ListUserPanel = ()=>{
         name: "Alice",
         status: "Online"
     },{
-        name:"Henry",
+        name:"Georges",
         status:"Absent"
     }]
     return (

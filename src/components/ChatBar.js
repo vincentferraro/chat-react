@@ -14,10 +14,10 @@ const ChatBar = ()=>{
 
     }
     return(<div className="flex h-[5%] w-screen border-2 border-black mb-0">
-            <form onSubmit={handleSubmit}>
-                <input type="text" onChange={onChange}/>
-                <button  >Sent</button>
-            </form>
+            
+                <input className="w-[90%] mt-1 mb-1 ml-3 mr-3 rounded-lg" type="text" onChange={onChange}/>
+                <button className="w-[5%] mt-1 mb-1 ml-3 mr-3 text-white rounded-lg bg-green-800" >Sent</button>
+            
     </div>)
 }
 
