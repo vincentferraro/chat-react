@@ -1,13 +1,30 @@
 import ListUserPanel from "./ListUserPanel/ListUserPanel"
 import ChatBar from "../components/ChatBar"
 import MessagesScreen from "./MessagesScreen/MessagesScreen"
+
+// Functions
+
+import { connect } from "../functions/connectManager"
+import { useEffect } from "react"
+// import { socket } from "../socket"
 const Chat = ()=>{
-    return(<div className="h-[88%] w-[100%] flex-col">
-        <div className="flex h-[100%] w-[100%] ">
-        <ListUserPanel />
-        <MessagesScreen />
+
+    useEffect(()=>{
+        connect()
+        // socket.emit('chat message',"Hello from CHAT REACT")
+    })
+    
+
+    return(
+    <div className="h-[90%] w-[100%] flex">
+        <div className="flex h-[100%] w-[20%] ">
+            <ListUserPanel />
         </div>
-        <ChatBar />
+        <div className="flex-col w-[100%] ">
+            <MessagesScreen />
+            <ChatBar />
+        </div>
+        
     </div>)
 
 }

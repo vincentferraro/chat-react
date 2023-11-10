@@ -10,8 +10,8 @@ const ListUserPanel = ()=>{
         status:"Absent"
     }]
     return (
-        <div className="w-[20%] h-auto bg-[#3B395D] text-white" >
-            {usersList.map( user => <User name={user.name} status={user.status}/>)}
+        <div className="w-[100%] h-auto bg-[#3B395D] text-white" >
+            {usersList.map( (user,index) => <User  key={user.name+index} name={user.name} status={user.status}/>)}
         </div>
     )
 }

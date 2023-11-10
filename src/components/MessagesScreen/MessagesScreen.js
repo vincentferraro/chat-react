@@ -8,8 +8,8 @@ const MessagesScreen = ()=>{
         username:"Georges",
         message:"Hello Alice, How are you?"
     }]
-    return(<div className="w-[100%] ">
-        {messagesList.map(message => <Message username={message.username} message={message.message} />)}
+    return(<div className="h-[92%] w-[100%] ">
+        {messagesList.map((message,index) => <Message key={message.username+index}username={message.username} message={message.message} />)}
     </div>)
 }
 
