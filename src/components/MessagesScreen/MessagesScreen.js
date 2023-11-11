@@ -1,10 +1,16 @@
 import { useEffect, useState, useRef } from "react"
 import Message from "./Message"
 import { socket } from "../../socket"
+import { randomColor } from "../../functions/randomColor"
 
 const MessagesScreen = ()=>{
 
-    const [messagesList, setMessagesList]=useState([])
+    const color = randomColor()
+    const [messagesList, setMessagesList]=useState([{
+        username:"Alice",
+        message:"Hello Everyone",
+        color:color
+    }])
 
     const chatContainerRef = useRef(null);
 
@@ -17,7 +23,7 @@ const MessagesScreen = ()=>{
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
-  
+
   //
   // UseEffect
   //
@@ -39,7 +45,7 @@ const MessagesScreen = ()=>{
     //
 
     return(<div className="h-[95%] w-[100%] truncate overflow-scroll" ref={chatContainerRef}>
-        {messagesList.map((message,index) => <Message key={message.username+index}username={message.username} message={message.message} />)}
+        {messagesList.map((message,index) => <Message key={message.username+index} color={message.color}username={message.username} message={message.message}  />)}
     </div>)
 }
 

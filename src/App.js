@@ -3,13 +3,15 @@ import Nav from './components/Nav';
 import Chat from './components/Chat';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import { randomColor } from './functions/randomColor';
 function App() {
 
   const [username, setUsername]= useState('')
 
+  const color = randomColor()
+  console.log(color)
   useEffect(()=>{
-    setUsername(prompt("Please enter username",''))
+    // setUsername(prompt("Please enter username",''))
   },[])
   
   return (
