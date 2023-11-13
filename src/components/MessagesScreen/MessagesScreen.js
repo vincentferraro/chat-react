@@ -1,15 +1,15 @@
 import { useEffect, useState, useRef } from "react"
 import Message from "./Message"
 import { socket } from "../../socket"
-import { randomColor } from "../../functions/randomColor"
+
 
 const MessagesScreen = ()=>{
 
-    const color = randomColor()
+
     const [messagesList, setMessagesList]=useState([{
         username:"Alice",
         message:"Hello Everyone",
-        color:color
+        color:"#7FFF00"
     }])
 
     const chatContainerRef = useRef(null);

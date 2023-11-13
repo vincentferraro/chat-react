@@ -5,12 +5,26 @@ import MessagesScreen from "./MessagesScreen/MessagesScreen"
 // Functions
 
 import { connect } from "../functions/connectManager"
-import { useEffect } from "react"
+import setUsername from "../functions/setUsername"
+import { useEffect, useState } from "react"
 // import { socket } from "../socket"
 const Chat = ()=>{
 
+    const [username, setStateUsername]= useState('')
+
+  useEffect(()=>{
+    connect()
+    // setStateUsername(prompt("Please enter username",''))
+    
+  },[])
+  
+  useEffect(()=>{
+    console.log("Use Effect, username", username)
+    setUsername(username)
+    console.log("Use Effect END")
+  },[])
     useEffect(()=>{
-        connect()
+        // connect()
         // socket.emit('chat message',"Hello from CHAT REACT")
     })
     

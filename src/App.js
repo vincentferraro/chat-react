@@ -1,29 +1,26 @@
 import './App.css';
 import Nav from './components/Nav';
 import Chat from './components/Chat';
+import SignIn from './components/SignIn'
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { randomColor } from './functions/randomColor';
+
+
+
 function App() {
 
-  const [username, setUsername]= useState('')
-
-  const color = randomColor()
-  console.log(color)
-  useEffect(()=>{
-    // setUsername(prompt("Please enter username",''))
-  },[])
   
   return (
-    <div className="flex-col h-screen w-[100%] bg-blue-400">
+    <div>
         <BrowserRouter>
-        <Nav />
+         {/* <Nav />
         <Routes>
-          <Route path="/" element={<Chat username={username} />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/" element={<Chat />}/>
           <Route path="/first-floor" element ={<h>First floor</h>}/>
-          <Route path="/second-florr" element ={<h>Second floor</h>}/>
+          <Route path="/second-florr" element ={<h>Second floor</h>}/> 
         </Routes>
-        
+        */}
+        <SignIn />
         </BrowserRouter>
         
     </div>
