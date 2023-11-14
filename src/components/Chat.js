@@ -1,32 +1,36 @@
 import ListUserPanel from "./ListUserPanel/ListUserPanel"
 import ChatBar from "../components/ChatBar"
 import MessagesScreen from "./MessagesScreen/MessagesScreen"
+import { getUsers } from "../functions/getSocket"
+import { setRoom } from "../functions/joinRoom"
+import { useEffect, useState } from "react"
+
 // Functions
 
-import { connect } from "../functions/connectManager"
-import setUsername from "../functions/setUsername"
-import { useEffect } from "react"
-// import { socket } from "../socket"
+
 const Chat = ()=>{
 
+    const [users, setUsers]= useState([])
 
-  useEffect(()=>{
-    connect()
-    // setStateUsername(prompt("Please enter username",''))
-    
-  },[])
-  
     useEffect(()=>{
-        // connect()
-        // socket.emit('chat message',"Hello from CHAT REACT")
-    })
+        setRoom('general')
+        // getSocket()
+        const userArr = getUsers()
+        if(userArr){
+            // setUsers(...userArr)
+            console.log('ARR',userArr)
+            setUsers(previous =>{
+                return [...previous, userArr]
+            })
+        }
     
+    },[])
 
     return(
             <div className="h-[90%] w-[100%] flex">
 
         <div className="flex h-[100%] w-[20%] ">
-            <ListUserPanel />
+            <ListUserPanel users={users} />
         </div>
         <div className="flex-col w-[100%] ">
             <MessagesScreen />

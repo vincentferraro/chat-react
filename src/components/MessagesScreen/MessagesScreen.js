@@ -6,11 +6,13 @@ import { socket } from "../../socket"
 const MessagesScreen = ()=>{
 
 
-    const [messagesList, setMessagesList]=useState([{
-        username:"Alice",
-        message:"Hello Everyone",
-        color:"#7FFF00"
-    }])
+    const [messagesList, setMessagesList]=useState([
+    //   {
+    //     username:"Alice",
+    //     message:"Hello Everyone",
+    //     color:"#7FFF00"
+    // }
+  ])
 
     const chatContainerRef = useRef(null);
 
@@ -44,7 +46,7 @@ const MessagesScreen = ()=>{
     // Rendered
     //
 
-    return(<div className="h-[95%] w-[100%] truncate overflow-scroll" ref={chatContainerRef}>
+    return(<div className="h-[95%] w-[100%] bg-[#60A5FA] truncate overflow-scroll" ref={chatContainerRef}>
         {messagesList.map((message,index) => <Message key={message.username+index} color={message.color}username={message.username} message={message.message}  />)}
     </div>)
 }

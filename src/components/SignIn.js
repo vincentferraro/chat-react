@@ -18,7 +18,6 @@ const SignIn =()=>{
         },
         onSubmit: (values) => {
             if(formik.values.username.length > 0 ){
-                alert(values.username);
                 dispatch(setUsername(values.username))
                 formik.resetForm();
                 navigate("/home")
@@ -29,7 +28,7 @@ const SignIn =()=>{
     
 
       return (
-        <div className="h-screen w-[100%] flex flex-col items-center justify-center border-2 border-solid border-green-400">
+        <div className="h-screen w-[100%] flex flex-col items-center justify-center bg-[#60A5FA]">
           <Image boxSize="md" src={Logo} alt="Coloc-chat" />
           <div className="h-[20%] w-[20%] flex justify-center items-center rounded-xl bg-white">
             <form className="flex flex-col justify-around items-center bg-white" onSubmit={formik.handleSubmit}>
