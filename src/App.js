@@ -1,7 +1,7 @@
 import './App.css';
-import Nav from './components/Nav';
-import Chat from './components/Chat';
+import Home from './components/Home';
 import SignIn from './components/SignIn'
+import Chat from './components/Chat';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 
 
@@ -12,15 +12,14 @@ function App() {
   return (
     <div>
         <BrowserRouter>
-         {/* <Nav />
         <Routes>
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/" element={<Chat />}/>
-          <Route path="/first-floor" element ={<h>First floor</h>}/>
-          <Route path="/second-florr" element ={<h>Second floor</h>}/> 
+          <Route path="/" element={<SignIn />} />
+          <Route path="/home" element={<Home />}>
+            <Route path="/home/general" element={<Chat />}/>
+            <Route path="/home/first-floor" element ={<h>First floor</h>}/>
+            <Route path=":second-floor" element ={<h>Second floor</h>}/> 
+          </Route>
         </Routes>
-        */}
-        <SignIn />
         </BrowserRouter>
         
     </div>

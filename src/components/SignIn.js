@@ -1,9 +1,17 @@
-import { FormControl, FormLabel, Input, FormHelperText,FormErrorMessage, Button,Image} from "@chakra-ui/react"
-import { ErrorMessage, useFormik } from "formik";
-import { useState } from "react"
+import { FormControl, FormLabel, Input,  Button,Image} from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom";
+import {  useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { setUsername } from "../app/features/username/usernameSlice";
 import Logo from "../assets/img/colloc-chat.png"
+
+
+
 const SignIn =()=>{
 
+    let navigate = useNavigate()
+    const dispatch = useDispatch()
+    
     const formik = useFormik({
         initialValues: {
           username: ''
@@ -11,11 +19,15 @@ const SignIn =()=>{
         onSubmit: (values) => {
             if(formik.values.username.length > 0 ){
                 alert(values.username);
+                dispatch(setUsername(values.username))
                 formik.resetForm();
+                navigate("/home")
+                
             }
         },
       });
-     
+    
+
       return (
         <div className="h-screen w-[100%] flex flex-col items-center justify-center border-2 border-solid border-green-400">
           <Image boxSize="md" src={Logo} alt="Coloc-chat" />
@@ -29,10 +41,10 @@ const SignIn =()=>{
                   placeholder="Enter your username"
                   value={formik.values.username}
                   onChange={formik.handleChange}
-                  onBlur={formik.handleBlur} // Add onBlur event handler
-                  isInvalid={formik.touched.username && !formik.values.username} // Set isInvalid prop
+                  onBlur={formik.handleBlur} 
+                  isInvalid={formik.touched.username && !formik.values.username} 
                 />
-                {/* Display error message */}
+                
                 {!formik.touched.username && formik.values.username.length === 0 ? (
                   <></>
                 ) : (<p className="text-red-500 bg-white">Username is required</p>)}

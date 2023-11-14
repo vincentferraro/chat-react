@@ -6,15 +6,15 @@ const Nav = ()=>{
     
     const links = [
         {
-            to:"/",
-            name:"Home"
+            to:"general",
+            name:"general"
         },
         {
-            to:"/first-floor",
+            to:"first-floor",
             name:"First Floor"
         },
         {
-            to:"/second-floor",
+            to:"second-floor",
             name:"Second Floor"
         }
     ]
