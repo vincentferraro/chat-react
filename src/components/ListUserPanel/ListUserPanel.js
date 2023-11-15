@@ -1,16 +1,17 @@
 import User from "./User"
 
 const ListUserPanel = (props)=>{
-    console.log('ListPanel',props.users[0])
+    // console.log('ListPanel',props.users[0])
     
     const uniqueIds = {};
-    const filteredArray = props.users[0]?.filter((item) => {
-      if (!uniqueIds[item.id]) {
-        uniqueIds[item.id] = true;
-        return true; // Include the first occurrence of each ID
-      }
-      return false; // Exclude duplicates
-    });
+    const filteredArray = []
+    // props.users[0]?.filter((item) => {
+    //   if (!uniqueIds[item.id]) {
+    //     uniqueIds[item.id] = true;
+    //     return true; // Include the first occurrence of each ID
+    //   }
+    //   return false; // Exclude duplicates
+    // });
 
     console.log(props.users)
     return (

@@ -5,7 +5,7 @@ import { connect } from "../functions/connectManager";
 import setUsername from "../functions/setUsername";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { setRoom } from "../functions/joinRoom";
+import { emitJoinRoom } from "../functions/joinRoom";
 const Home =()=>{
     const username = useSelector(state => state.username)
 
@@ -14,7 +14,7 @@ const Home =()=>{
     useEffect(()=>{
         connect()
         setUsername(username.username)
-        setRoom('general')
+        emitJoinRoom('general')
     },[])
 
     return(

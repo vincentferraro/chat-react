@@ -31,7 +31,7 @@ const MessagesScreen = ()=>{
   //
 
     useEffect(()=>{
-        socket.on("message",(data)=>{
+        socket.on('chat message',(data)=>{
             let newMessage= {
                 username:data.username,
                 message:data.message
