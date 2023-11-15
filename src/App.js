@@ -3,11 +3,27 @@ import Home from './components/Home';
 import SignIn from './components/SignIn'
 import Chat from './components/Chat';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
-
-
+import { useEffect } from 'react';
+import { disconnect } from './functions/connectManager';
 
 function App() {
 
+  useEffect(()=>{
+
+    const handleUnload = ()=>{
+      disconnect()
+    }
+
+    
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('unload', handleUnload);
+
+    return ()=>{
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('unload', handleUnload);
+  
+    }
+  },[])
   
   return (
     <div>

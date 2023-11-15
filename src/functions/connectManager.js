@@ -1,15 +1,10 @@
 import { socket } from "../socket";
 
 
-function connect(){
+export function connect(){
     socket.connect()
-    // socket.emit()
 }
-function disconnect(){
+export function disconnect(){
     socket.disconnect()
 }
 
-
-export {
-    connect, disconnect
-}
