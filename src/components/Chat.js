@@ -1,38 +1,35 @@
 import ListUserPanel from "./ListUserPanel/ListUserPanel"
 import ChatBar from "../components/ChatBar"
 import MessagesScreen from "./MessagesScreen/MessagesScreen"
-import { onGetSockets, emitGetSockets } from "../functions/getSocket"
-import { emitJoinRoom } from "../functions/joinRoom"
 import { useEffect, useState } from "react"
+import { socket } from "../socket"
+
+// import { useEffect, useState } from "react"
+// import { emitGetUsersRoom } from "../functions/emit/emitGetUsersRoom"
+// import { onGetUsersRoom } from "../functions/on/onGetUsersRoom"
 
 // Functions
 
 
 const Chat = ()=>{
 
-    const [users, setUsers]= useState([])
+    const [users, setUsers] = useState([])
 
     useEffect(()=>{
-       
-        const userArr = onGetSockets()
-        console.log('USERARR', userArr)
-        if(userArr){
-            // setUsers(...userArr)
-            console.log('ARR',userArr)
-            setUsers(previous =>{
-                return [...previous, userArr]
-            })
-        }
-    
-    },[])
-
-
+        
+        socket.on('get users room',(usersList)=>{
+            const usersJson = usersList.map(user => JSON.parse(user))
+            setUsers(usersJson)
+        })
+        console.log(users)
+    },[users])
+    console.log(users)
     return(
             <div className="h-[90%] w-[100%] flex">
 
         <div className="flex h-[100%] w-[20%] ">
             <ListUserPanel 
-            // users={users}
+                users={users}
              />
         </div>
         <div className="flex-col w-[100%] ">

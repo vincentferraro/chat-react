@@ -32,9 +32,10 @@ const MessagesScreen = ()=>{
 
     useEffect(()=>{
         socket.on('chat message',(data)=>{
+          const json = JSON.parse(data)
             let newMessage= {
-                username:data.username,
-                message:data.message
+                username:json.username,
+                message:json.message
             }
             const newMessageList = [...messagesList,newMessage]
             setMessagesList(newMessageList)

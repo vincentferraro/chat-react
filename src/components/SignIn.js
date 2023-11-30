@@ -2,9 +2,11 @@ import { FormControl, FormLabel, Input,  Button,Image} from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom";
 import {  useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsername } from "../app/features/username/usernameSlice";
+import { setUsername } from "../app/redux/username/usernameSlice";
 import Logo from "../assets/img/colloc-chat.png"
-
+import { useEffect } from "react";
+import { connect } from "../functions/connectManager";
+import { emitInitialization } from "../functions/emit/emitInitialization";
 
 
 const SignIn =()=>{
@@ -12,6 +14,9 @@ const SignIn =()=>{
     let navigate = useNavigate()
     const dispatch = useDispatch()
     
+    useEffect(()=>{
+      connect()
+    })
     const formik = useFormik({
         initialValues: {
           username: ''
@@ -20,6 +25,7 @@ const SignIn =()=>{
             if(formik.values.username.length > 0 ){
                 dispatch(setUsername(values.username))
                 formik.resetForm();
+                emitInitialization(values.username)
                 navigate("/home")
                 
             }

@@ -11,7 +11,7 @@ const ChatBar = ()=>{
 
     function handleSubmit(e){
         e.preventDefault()
-        socket.emit('chat message', message)
+        socket.emit('chat message', {room:"general", message:message})
         setMessage('')
     }
     

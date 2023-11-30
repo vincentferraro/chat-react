@@ -5,6 +5,7 @@ import Chat from './components/Chat';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { disconnect } from './functions/connectManager';
+import { onInfoMessage } from './functions/on/onInfoMessage';
 
 function App() {
 
@@ -14,7 +15,6 @@ function App() {
       disconnect()
     }
 
-    
     window.addEventListener('beforeunload', handleUnload);
     window.addEventListener('unload', handleUnload);
 
@@ -24,6 +24,10 @@ function App() {
   
     }
   },[])
+
+  useEffect(()=>{
+    onInfoMessage()
+  })
   
   return (
     <div>
