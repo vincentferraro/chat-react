@@ -1,5 +1,5 @@
 import { socket } from "../socket"
 
 export function emitJoinRoom(roomName){
-    socket.emit('joinRoom',roomName)
+    socket.emit('join room',roomName)
 }

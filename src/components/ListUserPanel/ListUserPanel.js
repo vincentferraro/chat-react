@@ -13,6 +13,14 @@ const ListUserPanel = ()=>{
             setUsers([...json ])
         })
     },[])
+
+    useEffect(()=>{
+        socket.on('update user list',(usersList)=>{
+            console.log('update user list', usersList)
+            const json = usersList.map(user => JSON.parse(user))
+            setUsers([...json ])
+        } )
+    }, [users])
     
     return (
         <div className="w-[100%] h-auto bg-[#3B395D] text-white" >
