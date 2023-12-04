@@ -14,16 +14,26 @@ import { socket } from "../socket"
 const Chat = ()=>{
 
     const [users, setUsers] = useState([])
-
+    const [previousMessages, setPreviousMessages]= useState([])
     useEffect(()=>{
         
         socket.on('get users room',(usersList)=>{
             const usersJson = usersList.map(user => JSON.parse(user))
             setUsers(usersJson)
         })
+
         console.log(users)
     },[users])
-    console.log(users)
+
+    useEffect(()=>{
+        socket.on('get previous messages', (data)=>{
+            const datas= data.map((message)=>JSON.parse(message)).sort((a,b)=>a.date - b.date).reverse()
+            setPreviousMessages([...previousMessages,...datas])
+       })
+    },[previousMessages])
+
+    console.log('PREVIOUS',previousMessages)
+    // console.log(users)
     return(
             <div className="h-[90%] w-[100%] flex">
 
@@ -33,7 +43,7 @@ const Chat = ()=>{
              />
         </div>
         <div className="flex-col w-[100%] ">
-            <MessagesScreen />
+            <MessagesScreen messages={previousMessages} />
             <ChatBar />
         </div>
         

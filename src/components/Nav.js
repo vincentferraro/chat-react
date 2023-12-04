@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 import { Button , Stack} from "@chakra-ui/react"
 import { emitJoinRoom } from "../functions/joinRoom"
+import { emitGetPreviousMessages } from "../functions/emit/emitGetPreviousMessages"
 const Nav = ()=>{
 
     
@@ -27,7 +28,11 @@ const Nav = ()=>{
         {
         links.map( link => 
             <Button size='md' colorScheme='blue' margin={4}>
-            <Link key={link.to} to={link.to} onClick={()=>emitJoinRoom(link.to)}>{link.name}</Link>
+            <Link key={link.to} to={link.to} onClick={()=>{
+                emitJoinRoom(link.to)
+                emitGetPreviousMessages(link.to)
+            }
+            }>{link.name}</Link>
             </Button>
         
         )

@@ -3,16 +3,13 @@ import Message from "./Message"
 import { socket } from "../../socket"
 
 
-const MessagesScreen = ()=>{
+const MessagesScreen = (props)=>{
+
 
 
     const [messagesList, setMessagesList]=useState([
-    //   {
-    //     username:"Alice",
-    //     message:"Hello Everyone",
-    //     color:"#7FFF00"
-    // }
-  ])
+      ...props.messages
+    ])
 
     const chatContainerRef = useRef(null);
 
