@@ -43,7 +43,7 @@ const Chat = ()=>{
              />
         </div>
         <div className="flex-col w-[100%] ">
-            <MessagesScreen messages={previousMessages} />
+            <MessagesScreen previousMessages={previousMessages} />
             <ChatBar />
         </div>
         

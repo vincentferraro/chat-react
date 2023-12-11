@@ -5,10 +5,10 @@ import { socket } from "../../socket"
 
 const MessagesScreen = (props)=>{
 
-
+  console.log()
 
     const [messagesList, setMessagesList]=useState([
-      ...props.messages
+      ...props.previousMessages
     ])
 
     const chatContainerRef = useRef(null);
@@ -32,7 +32,8 @@ const MessagesScreen = (props)=>{
           const json = JSON.parse(data)
             let newMessage= {
                 username:json.username,
-                message:json.message
+                message:json.message,
+                color: json.color
             }
             const newMessageList = [...messagesList,newMessage]
             setMessagesList(newMessageList)
@@ -44,7 +45,7 @@ const MessagesScreen = (props)=>{
     // Rendered
     //
 
-    return(<div className="h-[95%] w-[100%] bg-[#60A5FA] truncate overflow-scroll" ref={chatContainerRef}>
+    return(<div className="h-[95%] w-[100%] bg-[#60A5FA] overflow-scroll" ref={chatContainerRef}>
         {messagesList.map((message,index) => <Message key={message.username+index} color={message.color}username={message.username} message={message.message}  />)}
     </div>)
 }
